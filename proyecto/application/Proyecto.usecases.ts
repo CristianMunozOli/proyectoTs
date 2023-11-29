@@ -1,7 +1,7 @@
-import Proyecto from "../domain/proyecto";
+import Proyecto from "../domain/Proyecto";
 import ProyectoRepository from "../domain/Proyecto.repository";
 
-export class UserUseCases {
+export class ProyectoUseCases {
   private proyectoRepository: ProyectoRepository;
 
   constructor(proyectoRepository: ProyectoRepository) {

@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
     const proyectos = await proyectoRepository.getAllProyectos();
     res.json(proyectos);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -21,9 +22,10 @@ router.get("/:id", async (req, res) => {
     if (proyecto) {
       res.json(proyecto);
     } else {
-      res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "Proyecto not found" });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -34,6 +36,7 @@ router.post("/", async (req, res) => {
     const createProyecto = await proyectoRepository.createProyecto(newProyecto);
     res.status(201).json(createProyecto);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

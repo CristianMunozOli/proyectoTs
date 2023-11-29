@@ -19,9 +19,10 @@ async function createMongoConnection() {
 }
 
 const addCollections = (db: Db) => {
-  collections.users = db.collection(
+  collections.proyecto = db.collection(
     process.env.MONGO_DB_COLLECTION_USERS || "proyecto"
   );
+  
 };
 
 export default createMongoConnection;

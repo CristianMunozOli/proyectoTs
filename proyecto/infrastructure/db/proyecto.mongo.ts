@@ -1,11 +1,11 @@
 import { collections } from "../../../context/MongoConnection";
-import Proyecto from "../../domain/proyecto";
+import Proyecto from "../../domain/Proyecto";
 import ProyectoRepository from "../../domain/Proyecto.repository";
 import { ObjectId } from "mongodb";
 
 export default class ProyectoRepositoryMongoDB implements ProyectoRepository {
   async getAllProyectos(): Promise<Proyecto[] | undefined> {
-    const proyectosFromDB = await collections.proyectos.find().toArray();
+    const proyectosFromDB = await collections.proyecto.find().toArray();
     if (!proyectosFromDB) return undefined;
     const proyectos: Proyecto[] = proyectosFromDB.map((proyectoFromDB) => {
       const proyecto: Proyecto = {
@@ -21,15 +21,15 @@ export default class ProyectoRepositoryMongoDB implements ProyectoRepository {
     const objectId = new ObjectId(id);
     const proyectoFromDB = await collections.proyecto.findOne({ _id: objectId });
     if (!proyectoFromDB) return undefined;
-    const user: Proyecto = {
+    const proyecto: Proyecto = {
       id: String(proyectoFromDB._id),
       name: proyectoFromDB.name
     };
-    return user;
+    return proyecto;
   }
 
-  async createProyecto(user: Proyecto): Promise<Proyecto | undefined> {
-    const result = await collections.proyecto.insertOne(user);
+  async createProyecto(proyecto: Proyecto): Promise<Proyecto | undefined> {
+    const result = await collections.proyecto.insertOne(proyecto);
     const id = String(result.insertedId);
     return await this.getProyectoById(id);
   }
