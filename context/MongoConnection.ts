@@ -22,6 +22,9 @@ const addCollections = (db: Db) => {
   collections.proyecto = db.collection(
     process.env.MONGO_DB_COLLECTION_USERS || "proyecto"
   );
+  collections.tarea = db.collection(
+    process.env.MONGO_DB_COLLECTION_TAREA || "tarea"
+  );
   
 };
 

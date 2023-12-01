@@ -12,7 +12,7 @@ export class ProyectoUseCases {
     return await this.proyectoRepository.getProyectoById(id);
   }
 
-  async createUser(user: Proyecto) {
-    return await this.proyectoRepository.createProyecto(user);
+  async createUser(poyecto: Proyecto) {
+    return await this.proyectoRepository.createProyecto(poyecto);
   }
 }

@@ -1,4 +1,4 @@
-import Proyecto from "./proyecto";
+import Proyecto from "./Proyecto";
 
 export default interface ProyectoRepository {
   getAllProyectos(): Promise<Proyecto[] | undefined>;
